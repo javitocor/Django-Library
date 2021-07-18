@@ -11,5 +11,9 @@
       <dd>{{book.summary}}</dd>
     {% endfor %}
   </dl>
-  
+
+  {% if user.is_staff %}
+    <p><a href = "{% url 'author-update' pk=author.pk %}">Update author</a></p>
+    <p><a href = "{% url 'author-delete' pk=author.pk %}">Delete author</a></p>
+  {% endif %}
 {% endblock %}

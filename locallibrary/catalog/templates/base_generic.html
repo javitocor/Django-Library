@@ -22,10 +22,15 @@
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
-            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+            <li><a href="{% url 'logout'%}">Logout</a></li>
           {% else %}
             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
           {% endif %} 
+          {% if user.is_staff %}
+            <li><a href = "{% url 'all-borrowed' %}">All Borrowed</a></li>
+            <li><a href = "{% url 'book-create' %}">Add book</a></li>
+            <li><a href = "{% url 'author-create' %}">Add author</a></li>
+          {% endif %}
         </ul>
      {% endblock %}
       </div>
